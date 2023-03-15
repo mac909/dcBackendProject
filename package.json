@@ -1,0 +1,29 @@
+{
+  "name": "dcbackendproject",
+  "version": "1.0.0",
+  "description": "DC Backend Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mac909/dcBackendProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mac909/dcBackendProject/issues"
+  },
+  "homepage": "https://github.com/mac909/dcBackendProject#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "moment": "^2.29.4",
+    "pg": "^8.10.0",
+    "sequelize": "^6.29.3"
+  }
+}
