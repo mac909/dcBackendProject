@@ -18,10 +18,20 @@ const ordernowView = (req, res, next) => {
 	res.render("Ordernow");
 };
 
+const loginView = (req, res, next) => {
+	res.render("login");
+};
+
+const signUpView = (req, res, next) => {
+	res.render("signup");
+};
+
 module.exports = {
 	indexView,
 	iconView,
 	aboutView,
 	entreeView,
-	ordernowView
+	ordernowView,
+	loginView,
+	signUpView,
 };
