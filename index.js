@@ -2,8 +2,7 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
 const homeRoutes = require("./routes/home-routes");
-const winston = require('winston');
-
+const winston = require("winston");
 const app = express();
 
 app.use(expressLayouts);

@@ -1,5 +1,10 @@
-const indexView = (req, res, next) => {
-	res.render("home");
+const Sequelize = require("sequelize");
+const { customerMenu } = require("../models");
+
+const indexView = async (req, res, next) => {
+	const menuItems = await customerMenu.findAll();
+	res.render("home", { list: menuItems });
+	next();
 };
 
 const aboutView = (req, res, next) => {

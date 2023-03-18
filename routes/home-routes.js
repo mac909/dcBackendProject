@@ -2,7 +2,10 @@ const express = require("express");
 
 const {
 	indexView,
-	iconView, aboutView, entreeView, ordernowView,
+	iconView,
+	aboutView,
+	entreeView,
+	ordernowView,
 	loginView,
 	signUpView,
 } = require("../controllers/homeController");
@@ -13,7 +16,6 @@ router.get("/icon", iconView);
 router.get("/about", aboutView);
 router.get("/entrees", entreeView);
 router.get("/ordernow", ordernowView);
-
 
 router.get("/", loginView);
 router.get("/signup", signUpView);
