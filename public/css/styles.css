@@ -85,9 +85,15 @@ body {
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
+  /* background-image: url(/dcBackendProject/food/cheeseburger\ pic.jpg); */
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+/* box1 {
+
+  background-image: url(/dcBackendProject/food/cheeseburger\ pic.jpg) ;
+} */
 
 hr {
   margin: 1rem 0;
@@ -11285,4 +11291,53 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+/* About US CSS */
+
+#About-Us {
+  width: 100%;
+  background: url("../../assets/img/freshvegetablesAlexRaths-4c1ea186a88e4fd7b95283eee614600c.jpg") center / cover no-repeat;
+  height: 99vh;
+  color: rgb(18,20,22);
+}
+
+#Title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--bs-black);
+}
+
+#Title-2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #f8fafb;
+  font-style: italic;
+}
+
+#lucas {
+  width: 100px;
+  align-self: center;
+}
+
+#Lucas {
+  float: left;
+}
+
+.container {
+}
+
+.one {
+  /*justify-content: center;*/
+  /*align-content: center;*/
+  padding: 0px;
+  width: 100px;
+  margin: 50px;
+}
+
+.p-top {
+  color: rgb(251,252,253);
+  text-align: center;
 }
