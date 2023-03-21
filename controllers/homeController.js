@@ -19,6 +19,16 @@ const productView = async (req, res, next) => {
 	next();
 };
 
+const productAdded = async (req, res, next) => {
+	const item = await customerMenu.findOne({
+		where: {
+			id: req.params.id,
+		},
+	});
+	res.json(req.body);
+	next();
+};
+
 const aboutView = (req, res, next) => {
 	res.render("about");
 };
@@ -30,7 +40,6 @@ const indexView = (req, res, next) => {
 const iconView = (req, res, next) => {
 	res.render("icon");
 };
-
 
 const loginView = (req, res, next) => {
 	res.render("login");
@@ -84,5 +93,6 @@ module.exports = {
 	signUpView,
 	productView,
 	cartView,
+	productAdded,
 	addToCartView
 };

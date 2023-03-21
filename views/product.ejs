@@ -10,9 +10,48 @@
 					<p class="fw-bold mb-2"><%=item.price %></p>
 					<p class="my-3"><%= item.description %></p>
 					<form
-						class="d-flex justify-content-center flex-wrap justify-content-md-start flex-lg-nowrap"
+						class="container"
 						method="post"
-					></form>
+						action="/add-to-cart/<%=item.id %>"
+					>
+						<% for (i=1;i < item.additions.length;i++){%>
+						<!-- prettier-ignore -->
+						<% if (item.additions[0] == "radio") {%>
+
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="selection"
+								value="<%=item.additions[i] %>"
+								id="flexRadioDefault1"
+								checked
+							/>
+							<label class="form-check-label" for="selection">
+								<%= item.additions[i]%>
+							</label>
+						</div>
+						<%} else {%>
+						<div class="form-check">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								name="selection"
+								value="<%=item.additions[i] %>"
+								id="flexRadioDefault1"
+							/>
+							<label
+								class="form-check-label"
+								for="flexRadioDefault1"
+							>
+								<%= item.additions[i]%>
+							</label>
+						</div>
+						<%}%>
+						<div class="form-check"></div>
+						<%};%>
+						<input type="submit" value="Add to Cart" />
+					</form>
 				</div>
 			</div>
 			<div class="col-md-6 mb-4">
