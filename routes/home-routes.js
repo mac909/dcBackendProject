@@ -11,6 +11,7 @@ const {
 	menuView,
 	cartView,
 	productAdded,
+	addToCartView
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -23,6 +24,9 @@ router.get("/about", aboutView);
 router.get("/menu", menuView);
 router.get("/product/:id", productView);
 router.get("/cart", cartView);
+
+router.post("/carts", addToCartView);
+
 router.get("/login", loginView);
 router.get("/signup", signUpView);
 

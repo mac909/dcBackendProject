@@ -12,11 +12,17 @@ module.exports = {
       customerName: {
         type: Sequelize.STRING
       },
-      productid: {
+      customerId: {
         type: Sequelize.INTEGER
       },
-      price: {
+      productId: {
         type: Sequelize.INTEGER
+      },
+      productName: {
+        type: Sequelize.STRING
+      },
+      price: {
+        type: Sequelize.FLOAT
       },
       status: {
         type: Sequelize.STRING
@@ -28,7 +34,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       productImage: {
-				type: Sequelize.STRING,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

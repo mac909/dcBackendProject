@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const { customerMenu } = require("../models");
+const { carts } = require("../models");
 const bodyParser = require("body-parser");
 
 const menuView = async (req, res, next) => {
@@ -49,9 +50,38 @@ const signUpView = (req, res, next) => {
 };
 
 const cartView = async (req, res, next) => {
-	const menuItems = await customerMenu.findAll();
-	res.render("cart", { list: menuItems });
+	const cart = await carts.findAll({
+		where: {
+			customerId: 1,
+		},
+	});
+	res.render("cart", { list: cart });
 	next();
+};
+
+const addToCartView = async (req, res, next) => {
+	const product = await customerMenu.findOne({
+		where: {
+			id: req.body.id,
+		},
+	});
+	
+	console.log("What is the product here  ? "+product);
+	console.log("the req.body "+JSON.stringify(req.body));
+	
+	const item = await carts.create({
+		customerName: "lucas",
+		customerId: 1,
+		productName: product.name,
+		productId: req.body.id,
+		price: product.price,
+		status: "Active",
+		quantity: 1,
+		productDescription: product.description,
+		productImage: product.imageURL	
+	});
+
+	res.status(200);
 };
 
 module.exports = {
@@ -64,4 +94,5 @@ module.exports = {
 	productView,
 	cartView,
 	productAdded,
+	addToCartView
 };
