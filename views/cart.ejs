@@ -56,19 +56,18 @@
                   <tr>
                     <td class="p-4">
                       <div class="media align-items-center">
-                        <img src="<%= item.imageURL %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                        <img src="<%= item.productImage %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                         <div class="media-body">
-                          <a href="#" class="d-block text-dark"><%= item.name %></a>
+                          <a href="#" class="d-block text-dark"><%= item.productName %></a>
                           <small>
-                            <span class="text-muted"><%= item.description%></span>
-                            
+                            <span class="text-muted"><%= item.productDescription%></span>
                           </small>
                         </div>
                       </div>
                     </td>
                     <td class="text-right font-weight-semibold align-middle p-4"><%= item.price %></td>
-                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="2"></td>
-                    <td class="text-right font-weight-semibold align-middle p-4" ><%= item.price * 2 %></td>
+                    <td class="align-middle p-4"><input type="text" class="form-control text-center"><%= item.quantity %></td>
+                    <td class="text-right font-weight-semibold align-middle p-4" ><%= item.price * item.quantity %></td>
                     <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
                   </tr>
         
