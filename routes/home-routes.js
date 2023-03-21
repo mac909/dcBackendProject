@@ -5,25 +5,25 @@ const {
 	indexView,
 	iconView,
 	aboutView,
-	entreeView,
-	ordernowView,
 	loginView,
 	signUpView,
 	productView,
+	menuView,
+	cartView
 } = require("../controllers/homeController");
 const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-router.get("/home", indexView);
+router.get("/", indexView);
 router.get("/icon", iconView);
 router.get("/about", aboutView);
-router.get("/entrees", entreeView);
-router.get("/ordernow", ordernowView);
+router.get("/menu", menuView);
 router.get("/product/:id", productView);
+router.get("/cart", cartView);
 
-router.get("/", loginView);
+router.get("/login", loginView);
 router.get("/signup", signUpView);
 
 module.exports = {
