@@ -11,7 +11,14 @@ module.exports = {
 				price: 15.99,
 				description:
 					"A tender 13 oz. seasoned T-Bone steak. Served with one side and a dinner roll.",
-				additions: ["rare", "med-rare", "medium", "med-well", "well"],
+				additions: [
+					"radio",
+					"rare",
+					"med-rare",
+					"medium",
+					"med-well",
+					"well",
+				],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -22,7 +29,7 @@ module.exports = {
 				price: 12.59,
 				description:
 					"Two golden-fried chopped beef steaks smothered in country gravy. Served with your choice of one side and a dinner roll.",
-				additions: ["no gravy", "no roll"],
+				additions: ["checkbox", "no gravy", "no roll"],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -34,6 +41,7 @@ module.exports = {
 				description:
 					"Cheddar cheese tops two hand-pressed 100% beef patties. Served with lettuce, tomato, red onions and pickles on a brioche bun. Served with fries, or substitute another side.",
 				additions: [
+					"checkbox",
 					"no lettuce",
 					"no tomato",
 					"no onions",
@@ -50,6 +58,7 @@ module.exports = {
 				description:
 					"Five golden brown breaded chicken tenders, served with barbeque sauce, and your choice of one side.",
 				additions: [
+					"checkbox",
 					"no sauce",
 					"sub ranch",
 					"sub honey mustard",
@@ -64,7 +73,7 @@ module.exports = {
 				type: "Side",
 				price: 2.99,
 				description: "Side of corn.",
-				additions: ["extra butter", "add seasoning"],
+				additions: ["checkbox", "extra butter", "add seasoning"],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -74,7 +83,7 @@ module.exports = {
 				type: "Side",
 				price: 3.99,
 				description: "Side of creamy mac and cheese.",
-				additions: ["extra cheese", "add hot sauce"],
+				additions: ["checkbox", "extra cheese", "add hot sauce"],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -84,7 +93,7 @@ module.exports = {
 				type: "Side",
 				price: 2.99,
 				description: "Side of mixed veggies.",
-				additions: ["extra veggies", "add seasoning"],
+				additions: ["checkbox", "extra veggies", "add seasoning"],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
@@ -94,7 +103,7 @@ module.exports = {
 				type: "Side",
 				price: 3.99,
 				description: "Side of crispy, wavy-cut french fries.",
-				additions: ["extra fries", "no salt", "extra salt"],
+				additions: ["checkbox", "extra fries", "no salt", "extra salt"],
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
