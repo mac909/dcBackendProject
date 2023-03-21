@@ -1,9 +1,20 @@
 const Sequelize = require("sequelize");
 const { customerMenu } = require("../models");
+const bodyParser = require("body-parser");
 
 const indexView = async (req, res, next) => {
 	const menuItems = await customerMenu.findAll();
 	res.render("home", { list: menuItems });
+	next();
+};
+
+const productView = async (req, res, next) => {
+	const item = await customerMenu.findOne({
+		where: {
+			id: req.params.id,
+		},
+	});
+	res.render("product", { item: item });
 	next();
 };
 
@@ -39,4 +50,5 @@ module.exports = {
 	ordernowView,
 	loginView,
 	signUpView,
+	productView,
 };

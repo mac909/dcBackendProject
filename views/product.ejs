@@ -1,0 +1,29 @@
+<body>
+	<div class="container py-5">
+		<div class="row py-5">
+			<div
+				class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-end mb-4"
+			>
+				<div style="max-width: 450px">
+					<p class="fw-bold mb-2"><%= item.name %></p>
+
+					<p class="fw-bold mb-2"><%=item.price %></p>
+					<p class="my-3"><%= item.description %></p>
+					<form
+						class="d-flex justify-content-center flex-wrap justify-content-md-start flex-lg-nowrap"
+						method="post"
+					></form>
+				</div>
+			</div>
+			<div class="col-md-6 mb-4">
+				<div class="p-5 mx-lg-5">
+					<img
+						class="rounded img-fluid shadow w-100 fit-cover"
+						style="min-height: 300px"
+						src="<%= item.imageURL %>"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
