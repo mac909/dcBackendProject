@@ -39,6 +39,12 @@ const signUpView = (req, res, next) => {
 	res.render("signup");
 };
 
+const cartView = async (req, res, next) => {
+	const menuItems = await customerMenu.findAll();
+	res.render("cart", { list: menuItems });
+	next();
+};
+
 module.exports = {
 	indexView,
 	iconView,
@@ -47,4 +53,5 @@ module.exports = {
 	loginView,
 	signUpView,
 	productView,
+	cartView
 };

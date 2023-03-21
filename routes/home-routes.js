@@ -9,6 +9,7 @@ const {
 	signUpView,
 	productView,
 	menuView,
+	cartView
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.get("/icon", iconView);
 router.get("/about", aboutView);
 router.get("/menu", menuView);
 router.get("/product/:id", productView);
+router.get("/cart", cartView);
 
 router.get("/login", loginView);
 router.get("/signup", signUpView);

@@ -1,0 +1,33 @@
+<body>
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mx-auto">
+                <div class="col">
+                    <div class="shopping-cart-container">
+                        <table class="shopping-cart">
+                            <thead>
+                              <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <% list.forEach((item) => { %>
+
+                              <tr>
+                                <th scope="row"><%= item.name %></th>
+                                <td><%= item.price %></td>
+                                <td>somequant</td>
+                                <td value="getTotal()"></td>
+                              </tr>
+
+                              <% }); %>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
