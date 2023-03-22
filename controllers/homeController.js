@@ -49,6 +49,27 @@ const signUpView = (req, res, next) => {
 	res.render("signup");
 };
 
+
+
+const clearCart = async(req, res, next) => {
+	console.log("did I make it to clear cart");
+	const item = await carts.destroy({
+		where: {},
+		truncate: true
+	  })
+	  res.status(200);
+	  res.redirect('/cart');
+	};
+
+const clearItemCart = async(req, res, next) => {
+		console.log("did I make it to clear item cart");
+		const item = await carts.destroy({
+			where: {
+				id: req.params.id
+			}
+		  })
+		  res.status(200).send("success");		};	
+
 const cartView = async (req, res, next) => {
 	const cart = await carts.findAll({
 		where: {
@@ -94,5 +115,7 @@ module.exports = {
 	productView,
 	cartView,
 	productAdded,
-	addToCartView
+	addToCartView,
+	clearCart,
+	clearItemCart
 };

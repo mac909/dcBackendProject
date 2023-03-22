@@ -17,13 +17,15 @@
 			<% list.forEach((item) => { %>
 			<div class="col mb-5">
 				<div class="card h-100" >
-				
+					<a
+					href="/product/<%= item.id%>"
+					class="btn mt-auto"
+					>
 					<img
-						href="/products/<%= item.id%>"
 						src="<%= item.imageURL %>"
 						alt="<%= item.name %>"
 						class="card-img-top"
-					/>
+					/></a>
 					<div class="card-body p-4">
 						<div class="text-center">
 							<h5 class="fw-bolder"><%= item.name %></h5>
