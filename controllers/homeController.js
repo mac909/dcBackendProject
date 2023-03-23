@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
-const { customerMenu } = require("../models");
-const { carts } = require("../models");
+const { customerMenu, Users } = require("../models");
 const bodyParser = require("body-parser");
 
 const menuView = async (req, res, next) => {
@@ -49,26 +48,25 @@ const signUpView = (req, res, next) => {
 	res.render("signup");
 };
 
-
-
-const clearCart = async(req, res, next) => {
+const clearCart = async (req, res, next) => {
 	console.log("did I make it to clear cart");
 	const item = await carts.destroy({
 		where: {},
-		truncate: true
-	  })
-	  res.status(200);
-	  res.redirect('/cart');
-	};
+		truncate: true,
+	});
+	res.status(200);
+	res.redirect("/cart");
+};
 
-const clearItemCart = async(req, res, next) => {
-		console.log("did I make it to clear item cart");
-		const item = await carts.destroy({
-			where: {
-				id: req.params.id
-			}
-		  })
-		  res.status(200).send("success");		};	
+const clearItemCart = async (req, res, next) => {
+	console.log("did I make it to clear item cart");
+	const item = await carts.destroy({
+		where: {
+			id: req.params.id,
+		},
+	});
+	res.status(200).send("success");
+};
 
 const cartView = async (req, res, next) => {
 	const cart = await carts.findAll({
@@ -86,10 +84,10 @@ const addToCartView = async (req, res, next) => {
 			id: req.body.id,
 		},
 	});
-	
-	console.log("What is the product here  ? "+product);
-	console.log("the req.body "+JSON.stringify(req.body));
-	
+
+	console.log("What is the product here  ? " + product);
+	console.log("the req.body " + JSON.stringify(req.body));
+
 	const item = await carts.create({
 		customerName: "lucas",
 		customerId: 1,
@@ -99,10 +97,27 @@ const addToCartView = async (req, res, next) => {
 		status: "Active",
 		quantity: 1,
 		productDescription: product.description,
-		productImage: product.imageURL	
+		productImage: product.imageURL,
 	});
 
 	res.status(200);
+};
+
+const newUser = async (req, res, next) => {
+	// const newUser = await Users.findOne({
+	// 	where: {
+	// 		email: req.body.email,
+	// 	},
+	// });
+	// if (req.body.email != req.body.confirmEmail) {
+	// 	res.send("Please check your email and try again");
+	const createUser = await Users.create({
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		email: req.body.email,
+		password: req.body.password,
+	});
+	res.send(req.body);
 };
 
 module.exports = {
@@ -117,5 +132,6 @@ module.exports = {
 	productAdded,
 	addToCartView,
 	clearCart,
-	clearItemCart
+	clearItemCart,
+	newUser,
 };

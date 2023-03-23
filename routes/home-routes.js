@@ -13,7 +13,8 @@ const {
 	productAdded,
 	addToCartView,
 	clearCart,
-	clearItemCart
+	clearItemCart,
+	newUser,
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -35,6 +36,7 @@ router.post("/clear", clearCart);
 router.delete("/clearItemCart/:id", clearItemCart);
 
 router.post("/add-to-cart/:id", productAdded);
+router.post("/signup/newuser", newUser);
 
 module.exports = {
 	routes: router,
