@@ -16,9 +16,10 @@ module.exports = (sequelize, DataTypes) => {
 			imageURL: DataTypes.STRING,
 			name: DataTypes.STRING,
 			type: DataTypes.STRING,
-			price: DataTypes.NUMERIC,
+			price: DataTypes.FLOAT,
 			description: DataTypes.STRING,
 			additions: DataTypes.ARRAY(DataTypes.STRING),
+			quantityAv: DataTypes.INTEGER,
 		},
 		{
 			sequelize,
