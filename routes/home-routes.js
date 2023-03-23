@@ -11,7 +11,9 @@ const {
 	menuView,
 	cartView,
 	productAdded,
-	addToCartView
+	addToCartView,
+	clearCart,
+	clearItemCart
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -29,6 +31,8 @@ router.post("/carts", addToCartView);
 
 router.get("/login", loginView);
 router.get("/signup", signUpView);
+router.post("/clear", clearCart);
+router.delete("/clearItemCart/:id", clearItemCart);
 
 router.post("/add-to-cart/:id", productAdded);
 
