@@ -33,12 +33,35 @@
 							<p><%= item.description %></p>
 						</div>
 					</div>
-					<form class="form"  action="/carts" method="post" name="shopping-cart">    
-						<input type="hidden" name="id" class="form-control" id="id" placeholder="id" value="<%=item.id%>">  
-						<input type="hidden" name="customerId" class="form-control" id="customerId" placeholder="customerId" value="1">          
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+					<form
+						class="form"
+						action="/carts"
+						method="post"
+						name="shopping-cart"
+					>
+						<input
+							type="hidden"
+							name="id"
+							class="form-control"
+							id="id"
+							placeholder="id"
+							value="<%=item.id%>"
+						/>
+						<input
+							type="hidden"
+							name="customerId"
+							class="form-control"
+							id="customerId"
+							placeholder="customerId"
+							value="1"
+						/>
+						<div
+							class="card-footer p-4 pt-0 border-top-0 bg-transparent"
+						>
 							<div class="text-center">
-								<button class="btn btn-outline-dark mt-auto" >Add to Cart</button>
+								<button class="btn btn-outline-dark mt-auto">
+									Add to Cart
+								</button>
 							</div>
 						</div>
 					</form>
