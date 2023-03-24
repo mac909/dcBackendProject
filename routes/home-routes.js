@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 
 const {
 	indexView,
-	iconView,
 	aboutView,
 	loginView,
 	signUpView,
@@ -14,6 +13,7 @@ const {
 	clearCart,
 	clearItemCart,
 	newUser,
+	cartCount,
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -21,17 +21,17 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
 router.get("/", indexView);
-router.get("/icon", iconView);
 router.get("/about", aboutView);
 router.get("/menu", menuView);
 router.get("/product/:id", productView);
 router.get("/cart", cartView);
-
 router.get("/login", loginView);
 router.get("/signup", signUpView);
-router.post("/clear", clearCart);
+router.get("/cart/count", cartCount);
+
 router.delete("/clearItemCart/:id", clearItemCart);
 
+router.post("/clear", clearCart);
 router.post("/add-to-cart/:id", productAdded);
 router.post("/signup/newuser", newUser);
 
