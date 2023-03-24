@@ -1,22 +1,22 @@
 <body>
 	
-	<div style="background: url('../../assets/food/steak.jpg'); height: 700px; background-repeat: no-repeat;background-size: cover;padding-right: 820px;padding-top:30px;"	class="jumbotron bg-cover text-white">
-		<section class="py-5">
+	<div style="background: url('../../assets/food/steak.jpg'); min-height: 55rem; background-repeat: no-repeat;background-size: cover;background-position: center;"	class="text-white container-fluid h-100 ">
+		<section class="py-5" style="max-width: 40rem;">
 			<div class="container py-5">
-					<div class="col-md-8 col-xl-6 text-center mx-auto">
+					<div class="col-md-8 col-xl-6 col-sm-12 text-center mx-auto">
 						
-						<h4 class="fw-bold text-secondary mb-2" style="color: white;-webkit-text-stroke: 1.5px black">Login</h4>
-						<h2 class="fw-bold text-secondary"style="color: white;-webkit-text-stroke: 1.5px black">Welcome back</h2>
+						<h4 class="fw-bold text-light mb-2" style="color: white;-webkit-text-stroke: 1.5px black">Login</h4>
+						<h2 class="fw-bold text-light"style="color: white;-webkit-text-stroke: 1.5px black">Welcome back</h2>
 						
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center">
-					<div class="col-md-6 col-xl-4">
-						<div class="card">
+					<div class="col-md-8 col-xl-6 col-sm-12">
+						<div class="card bg-dark bg-opacity-75">
 							<div
-								class="card-body text-center d-flex flex-column align-items-center"
+								class="card-body d-flex flex-column"
 							>
-								<form method="post">
+								<form method="post" action="/login/existingUser">
 									<div class="mb-3">
 										<input
 											class="form-control"
