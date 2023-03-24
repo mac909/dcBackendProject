@@ -11,7 +11,6 @@ const {
 	menuView,
 	cartView,
 	productAdded,
-	addToCartView,
 	clearCart,
 	clearItemCart,
 	newUser,
@@ -27,8 +26,6 @@ router.get("/about", aboutView);
 router.get("/menu", menuView);
 router.get("/product/:id", productView);
 router.get("/cart", cartView);
-
-router.post("/carts", addToCartView);
 
 router.get("/login", loginView);
 router.get("/signup", signUpView);

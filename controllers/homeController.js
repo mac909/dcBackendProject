@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const { customerMenu, Users } = require("../models");
+const { customerMenu, Users, customerOrders } = require("../models");
 const bodyParser = require("body-parser");
 
 const menuView = async (req, res, next) => {
@@ -24,7 +24,22 @@ const productAdded = async (req, res, next) => {
 			id: req.params.id,
 		},
 	});
-	res.json(req.body);
+	if (typeof req.body.selection == "string") {
+		const addToOrder = await customerOrders.create({
+			customerID: 1,
+			productID: req.params.id,
+			addons: [req.body.selection],
+			status: "Incomplete",
+		});
+	} else {
+		const addToOrder = await customerOrders.create({
+			customerID: 1,
+			productID: req.params.id,
+			addons: req.body.selection,
+			status: "Incomplete",
+		});
+	}
+	res.redirect("/menu");
 	next();
 };
 
@@ -50,7 +65,7 @@ const signUpView = (req, res, next) => {
 
 const clearCart = async (req, res, next) => {
 	console.log("did I make it to clear cart");
-	const item = await carts.destroy({
+	const item = await customerOrders.destroy({
 		where: {},
 		truncate: true,
 	});
@@ -60,7 +75,7 @@ const clearCart = async (req, res, next) => {
 
 const clearItemCart = async (req, res, next) => {
 	console.log("did I make it to clear item cart");
-	const item = await carts.destroy({
+	const item = await customerOrders.destroy({
 		where: {
 			id: req.params.id,
 		},
@@ -69,39 +84,18 @@ const clearItemCart = async (req, res, next) => {
 };
 
 const cartView = async (req, res, next) => {
-	const cart = await carts.findAll({
-		where: {
-			customerId: 1,
-		},
+	const cart = await customerOrders.findAll({
+		include: [
+			{
+				model: customerMenu,
+			},
+		],
 	});
 	res.render("cart", { list: cart });
 	next();
 };
 
-const addToCartView = async (req, res, next) => {
-	const product = await customerMenu.findOne({
-		where: {
-			id: req.body.id,
-		},
-	});
-
-	console.log("What is the product here  ? " + product);
-	console.log("the req.body " + JSON.stringify(req.body));
-
-	const item = await carts.create({
-		customerName: "lucas",
-		customerId: 1,
-		productName: product.name,
-		productId: req.body.id,
-		price: product.price,
-		status: "Active",
-		quantity: 1,
-		productDescription: product.description,
-		productImage: product.imageURL,
-	});
-
-	res.status(200);
-};
+const addToCartView = async (req, res, next) => {};
 
 const newUser = async (req, res, next) => {
 	// const newUser = await Users.findOne({
