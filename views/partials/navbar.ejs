@@ -1,5 +1,5 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 	<div class="container px-4 px-lg-5">
 		<a class="navbar-brand" href="/">DKLM</a>
 		<button
@@ -48,9 +48,31 @@
 					Cart
 					<span
 						class="badge bg-dark text-white ms-1 rounded-pill"
-					></span>
+						id="cart-count"
+						>0</span
+					>
 				</a>
 			</form>
 		</div>
 	</div>
 </nav>
+<script>
+	function updateCartCount(count) {
+		document.getElementById("cart-count").innerHTML = count;
+	}
+
+	function fetchCartCount() {
+		fetch("/cart/count")
+			.then((response) => response.json())
+			.then((data) => {
+				updateCartCount(data);
+			})
+			.catch((error) => {
+				console.error("Failed to fetch cart count", error);
+			});
+	}
+
+	document.addEventListener("DOMContentLoaded", function () {
+		fetchCartCount();
+	});
+</script>

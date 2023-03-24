@@ -51,10 +51,6 @@ const indexView = (req, res, next) => {
 	res.render("home");
 };
 
-const iconView = (req, res, next) => {
-	res.render("icon");
-};
-
 const loginView = (req, res, next) => {
 	res.render("login");
 };
@@ -95,7 +91,10 @@ const cartView = async (req, res, next) => {
 	next();
 };
 
-const addToCartView = async (req, res, next) => {};
+const cartCount = async (req, res, next) => {
+	const count = await customerOrders.count();
+	res.json(count);
+};
 
 const newUser = async (req, res, next) => {
 	// const newUser = await Users.findOne({
@@ -116,7 +115,6 @@ const newUser = async (req, res, next) => {
 
 module.exports = {
 	indexView,
-	iconView,
 	aboutView,
 	menuView,
 	loginView,
@@ -124,7 +122,7 @@ module.exports = {
 	productView,
 	cartView,
 	productAdded,
-	addToCartView,
+	cartCount,
 	clearCart,
 	clearItemCart,
 	newUser,
