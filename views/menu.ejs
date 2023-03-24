@@ -16,15 +16,12 @@
 		>
 			<% list.forEach((item) => { %>
 			<div class="col mb-5">
-				<div class="card h-100" >
-					<a
-					href="/product/<%= item.id%>"
-					class="btn mt-auto"
-					>
-					<img
-						src="<%= item.imageURL %>"
-						alt="<%= item.name %>"
-						class="card-img-top"
+				<div class="card h-100">
+					<a href="/product/<%= item.id%>" class="btn mt-auto">
+						<img
+							src="<%= item.imageURL %>"
+							alt="<%= item.name %>"
+							class="card-img-top"
 					/></a>
 					<div class="card-body p-4">
 						<div class="text-center">
@@ -35,8 +32,8 @@
 					</div>
 					<form
 						class="form"
-						action="/carts"
-						method="post"
+						action="/product/<%= item.id%>"
+						method="get"
 						name="shopping-cart"
 					>
 						<input

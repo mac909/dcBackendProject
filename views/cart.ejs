@@ -18,7 +18,7 @@
                     <!-- Set columns width -->
                     <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                    <th class="text-center py-3 px-4" style="width: 120px;">Add Ons</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
                     <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                   </tr>
@@ -28,18 +28,18 @@
                   <tr id="<%= item.id %>">
                     <td class="p-4">
                       <div class="media align-items-center">
-                        <img src="<%= item.productImage %>" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                        <img src="<%= item.customerMenu.imageURL %>"  class="d-block ui-bordered mr-4" alt="" style="height: 5rem;">
                         <div class="media-body">
-                          <a href="#" class="d-block text-dark"><%= item.productName %></a>
+                          <a href="#" class="d-block text-dark"><%= item.customerMenu.name %></a>
                           <small>
-                            <span class="text-muted"><%= item.productDescription%></span>
+                            <span class="text-muted"><%= item.customerMenu.description%></span>
                           </small>
                         </div>
                       </div>
                     </td>
-                    <td id="price" class="text-right font-weight-semibold align-middle p-4"><%= item.price %></td>
-                    <td id="quantity" class="align-middle p-4"><input type="text" class="form-control text-center" value="<%= item.quantity %>"></td>
-                    <td id="total" class="text-right font-weight-semibold align-middle p-4" ><%= (item.price * item.quantity) %></td>
+                    <td id="price" class="text-right font-weight-semibold align-middle p-4"><%= item.customerMenu.price %></td>
+                    <td id="addons" class="align-middle p-4"><%= item.addons%></td>
+                    <td id="total" class="text-right font-weight-semibold align-middle p-4" ><%= item.customerMenu.price %></td>
                     <td class="text-center align-middle px-0"><button onclick="handleDelete('<%= item.id %>')" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</button></td>
                   </tr>
         
