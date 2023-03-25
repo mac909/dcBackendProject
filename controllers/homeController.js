@@ -177,6 +177,22 @@ const accountView = async (req, res, next) => {
 	// });
 };
 
+const updateInfo = async (req, res, next) => {
+	const updateUser = Users.update(
+		{
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			email: req.body.email,
+		},
+		{
+			where: {
+				id: req.session.userID,
+			},
+		}
+	);
+	res.send("Change was made");
+};
+
 module.exports = {
 	indexView,
 	aboutView,
@@ -193,4 +209,5 @@ module.exports = {
 	existingUser,
 	checkLogin,
 	accountView,
+	updateInfo,
 };

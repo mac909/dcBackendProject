@@ -18,6 +18,7 @@ const {
 	existingUser,
 	checkLogin,
 	accountView,
+	updateInfo,
 } = require("../controllers/homeController");
 const router = express.Router();
 
@@ -43,6 +44,8 @@ router.get("/checkLogin", checkLogin);
 router.get("/account", accountView);
 
 router.delete("/clearItemCart/:id", clearItemCart);
+
+router.put("/update/user", updateInfo);
 
 router.post("/clear", clearCart);
 router.post("/add-to-cart/:id", productAdded);
