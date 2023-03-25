@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 
 const {
@@ -14,11 +15,21 @@ const {
 	clearItemCart,
 	newUser,
 	cartCount,
+	existingUser,
+	checkLogin,
+	accountView,
 } = require("../controllers/homeController");
 const router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+router.use(
+	session({
+		secret: "qweasdzxcrfv",
+		resave: false,
+		saveUninitialized: true,
+	})
+);
 
 router.get("/", indexView);
 router.get("/about", aboutView);
@@ -28,12 +39,15 @@ router.get("/cart", cartView);
 router.get("/login", loginView);
 router.get("/signup", signUpView);
 router.get("/cart/count", cartCount);
+router.get("/checkLogin", checkLogin);
+router.get("/account", accountView);
 
 router.delete("/clearItemCart/:id", clearItemCart);
 
 router.post("/clear", clearCart);
 router.post("/add-to-cart/:id", productAdded);
 router.post("/signup/newuser", newUser);
+router.post("/login/existingUser", existingUser);
 
 module.exports = {
 	routes: router,

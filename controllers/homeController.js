@@ -1,9 +1,12 @@
 const Sequelize = require("sequelize");
+const bcrypt = require("bcrypt");
 const { customerMenu, Users, customerOrders } = require("../models");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 const menuView = async (req, res, next) => {
 	const menuItems = await customerMenu.findAll();
+	// res.json(req.session);
 	res.render("menu", { list: menuItems });
 	next();
 };
@@ -94,6 +97,23 @@ const cartView = async (req, res, next) => {
 const cartCount = async (req, res, next) => {
 	const count = await customerOrders.count();
 	res.json(count);
+	next();
+};
+
+const checkLogin = async (req, res, next) => {
+	const guestID = await Users.findOne({
+		where: {
+			firstName: "Guest",
+		},
+	}).then((user) => {
+		if (!req.session.email || !req.session.name) {
+			req.session.name = "Guest";
+			req.session.id = user.id;
+			res.json(req.session.name);
+		} else {
+			res.json(req.session.name);
+		}
+	});
 };
 
 const newUser = async (req, res, next) => {
@@ -108,9 +128,53 @@ const newUser = async (req, res, next) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		email: req.body.email,
-		password: req.body.password,
+		password: await bcrypt.hash(req.body.password, 10),
 	});
 	res.send(req.body);
+	next();
+};
+
+const existingUser = async (req, res, next) => {
+	const findUser = await Users.findOne({
+		where: {
+			email: req.body.email,
+		},
+	})
+		.then((user) => {
+			if (!user) {
+				res.send("User not found");
+			} else if (bcrypt.compare(req.body.password, user.password)) {
+				// User with the specified email exists
+				req.session.email = user.email;
+				req.session.name = user.firstName;
+				req.session.userID = user.id;
+				res.render("welcome", {
+					user: user,
+					userInfo: req.session.name,
+				});
+			} else {
+				res.send("Password does not match!");
+			}
+		})
+		.catch((error) => {
+			// Handle any errors that occur while querying the database
+			res.send("There was an unhandled error");
+		});
+	next();
+};
+
+const accountView = async (req, res, next) => {
+	const account = await Users.findOne({
+		where: {
+			id: req.session.userID,
+		},
+	}).then((user) => {
+		res.render("account", { list: user });
+	});
+	// .catch((error) => {
+	// 	// Handle any errors that occur while querying the database
+	// 	res.send("There was an unhandled error");
+	// });
 };
 
 module.exports = {
@@ -126,4 +190,7 @@ module.exports = {
 	clearCart,
 	clearItemCart,
 	newUser,
+	existingUser,
+	checkLogin,
+	accountView,
 };

@@ -1,0 +1,33 @@
+
+    <section class="py-5" style="
+    background: url('/assets/food/chicken tenders.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 40rem;
+">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-xl-4">
+                    <div class="card bg-dark bg-opacity-75">
+                        <div class="card-body text-center d-flex flex-column align-items-center">
+                            
+                            <form>
+                                <span class="input-group-text" id="basic-addon1">First Name</span><div class="mb-3"><input class="form-control" value="<%= list.firstName%>" type="text" name="firstName" style="margin: 0px;margin-bottom: 1rem; " ></div>
+                                <span class="input-group-text" id="basic-addon1">Last Name</span><div class="mb-3"><input class="form-control" value="<%= list.lastName%>" type="text" name="lastName" style="margin: 0px;margin-bottom: 1rem;" ></div>
+                                <span class="input-group-text" id="basic-addon1">Email</span><div class="mb-3"><input class="form-control" value="<%= list.email%>" type="email" name="email" style="margin: 0px;margin-bottom: 1rem;" ></div>
+                                <span class="input-group-text" id="basic-addon1">Password</span><div class="mb-3"><input class="form-control" value="<%= list.password%>" type="password" name="password" style="margin-bottom: 1rem;" ></div>
+                                <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="button">Save Changes</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bold-and-bright.js"></script>
+</body>
+
+</html>
