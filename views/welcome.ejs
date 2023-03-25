@@ -1,0 +1,16 @@
+<body>
+	<div class="container">
+		<h1>Welcome <%= user.firstName%></h1>
+		<p>
+			We are glad to have you here. Please take a look around and let us
+			know if you have any questions or feedback.
+		</p>
+	</div>
+	<!-- Bootstrap JS -->
+</body>
+<script>
+	// Redirect the user after 5 seconds
+	setTimeout(function () {
+		window.location.href = "/menu"; // Replace with the URL you want to redirect to
+	}, 5000);
+</script>

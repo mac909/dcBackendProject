@@ -27,7 +27,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/login">Login</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" id="signup">
 					<a class="nav-link" href="/signup">Sign Up</a>
 				</li>
 			</ul>
@@ -54,12 +54,65 @@
 					>
 				</a>
 			</form>
+
+			<form class="nav-item dropdown d-flex mx-2">
+				<a
+					href="#"
+					id="userBtn"
+					class="btn btn-info btn-outline-dark bg-primary bg-gradient disabled dropdown-toggle"
+					role="button"
+					data-bs-toggle="dropdown"
+					aria-expanded="false"
+				>
+					<span
+						class="badge bg-dark text-white ms-1 rounded-pill"
+						id="userName"
+					></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a class="dropdown-item" href="/account"
+							>Account Information</a
+						>
+					</li>
+					<li><hr class="dropdown-divider" /></li>
+					<li>
+						<a class="dropdown-item" href="/logout">Log Out</a>
+					</li>
+				</ul>
+			</form>
 		</div>
 	</div>
 </nav>
 <script>
 	function updateCartCount(count) {
 		document.getElementById("cart-count").innerHTML = count;
+	}
+
+	function updateUser(user) {
+		const state = document
+			.getElementById("userBtn")
+			.classList.contains("disabled");
+		const signupState = document
+			.getElementById("signup")
+			.classList.contains("invisible");
+		if (user == "Guest") {
+			if (state === false) {
+				document.getElementById("userBtn").classList.add("disabled");
+			}
+			if (signupState) {
+				document.getElementById("signup").classList.remove("invisible");
+			}
+			document.getElementById("userName").innerHTML = user;
+		} else {
+			if (state) {
+				document.getElementById("userBtn").classList.remove("disabled");
+			}
+			if (signupState === false) {
+				document.getElementById("signup").classList.add("invisible");
+			}
+			document.getElementById("userName").innerHTML = user;
+		}
 	}
 
 	function fetchCartCount() {
@@ -73,7 +126,19 @@
 			});
 	}
 
+	function checkLogin() {
+		fetch("/checkLogin")
+			.then((response) => response.json())
+			.then((data) => {
+				updateUser(data);
+			})
+			.catch((error) => {
+				console.error("Failed to fetch cart count", error);
+			});
+	}
+
 	document.addEventListener("DOMContentLoaded", function () {
 		fetchCartCount();
+		checkLogin();
 	});
 </script>
