@@ -12,6 +12,14 @@ module.exports = {
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
+			{
+				firstName: "User",
+				lastName: "user",
+				email: "user@email.com",
+				password: "user",
+				createdAt: new Date(),
+				updatedAt: new Date(),
+			},
 		]);
 	},
 
