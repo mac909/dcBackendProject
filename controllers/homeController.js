@@ -190,6 +190,8 @@ const updateInfo = async (req, res, next) => {
 			},
 		}
 	);
+	req.session.name = req.body.firstName;
+	req.session.email = req.body.email;
 	res.send("Change was made");
 };
 
