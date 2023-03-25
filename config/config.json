@@ -10,7 +10,8 @@
         "require": true, 
         "rejectUnauthorized": false 
       }
-  },
+  }
+},
   "test": {
     "username": "gkchltyywseftn",
     "password": "90afc11073fb61248324933974c6918efdb3cfbf14f2b52dc7b5da0428311221",
